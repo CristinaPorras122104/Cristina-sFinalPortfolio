@@ -25,9 +25,17 @@
   border-radius: 50%;
   padding: 10px;
   border: 1px solid #d9dbdf;
-  /* background-color: #6c63ff; */
-  /* background: transparent; */
   box-shadow: 5px 5px 5px #d9dbdf;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-img img {
+  max-width: 100%;
+  max-height: 100%;
+  transform: scale(0.9);
+  border-radius: 50%; /* Ensure image is circular */
 }
 
 .body-header {
@@ -47,22 +55,20 @@
 .body-header-duration {
   width: 20%;
 }
+
 .duration {
   font-family: "Google Sans Regular";
   font-size: 16px;
-  /* color: #212121; */
   padding-right: 10px;
   float: right;
 }
 
 .body-content {
   max-width: inherit;
-  /* width: 100%; */
   border-radius: 0px 0px 7px 7px;
   padding: 10px;
   justify-content: center;
   align-items: center;
-  /* box-shadow: 5px 5px 5px #d3d3d3; */
 }
 
 .content-list {
@@ -72,7 +78,6 @@
 }
 
 .card-body {
-  /* background-color: #00FF00; */
   border-bottom: 1px solid #d9dbdf;
   border-left: 1px solid #d9dbdf;
   border-right: 1px solid #d9dbdf;
@@ -82,7 +87,6 @@
 }
 
 .visit-btn {
-  /* background-color: #6c63ff99; */
   display: inline-block;
   margin: 0px 10px 10px 0px;
   padding: 10px;
@@ -99,10 +103,6 @@
   margin: 0px;
   padding: 0px;
   font-family: "Google Sans Regular";
-  /* color: #000000; */
-}
-
-@media (max-width: 1380px) {
 }
 
 @media (max-width: 768px) {
@@ -131,7 +131,8 @@
   }
 
   .card-img {
-    width: 200px;
+    width: 150px; /* Adjust size for small screens */
+    height: 150px;
   }
 
   .card-body {

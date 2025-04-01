@@ -6,7 +6,6 @@ import {
   socialMediaLinks,
   experience,
   contactPageData,
-  certifications,
 } from "../../portfolio.js";
 
 function SeoHeader() {
@@ -22,21 +21,11 @@ function SeoHeader() {
 
   let mail = socialMediaLinks
     .find((media) => media.link.startsWith("mailto"))
-    .link.substring("mailto:".length);
+    ?.link.substring("mailto:".length);
   let job = experience.sections
     ?.find((section) => section.work)
     ?.experiences?.at(0);
 
-  let credentials = [];
-  certifications.certifications.forEach((certification) => {
-    credentials.push({
-      "@context": "https://schema.org",
-      "@type": "EducationalOccupationalCredential",
-      url: certification.certificate_link,
-      name: certification.title,
-      description: certification.subtitle,
-    });
-  });
   const data = {
     "@context": "https://schema.org/",
     "@type": "Person",
@@ -45,10 +34,10 @@ function SeoHeader() {
     email: mail,
     telephone: contactPageData.phoneSection?.subtitle,
     sameAs: sameAs,
-    jobTitle: job.title,
+    jobTitle: job?.title,
     worksFor: {
       "@type": "Organization",
-      name: job.company,
+      name: job?.company,
     },
     address: {
       "@type": "PostalAddress",
@@ -58,7 +47,6 @@ function SeoHeader() {
       postalCode: contactPageData.addressSection?.postalCode,
       streetAddress: contactPageData.addressSection?.streetAddress,
     },
-    hasCredential: credentials,
   };
   return (
     <Helmet>

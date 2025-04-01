@@ -1,13 +1,17 @@
 import React, { Component } from "react";
 import "./DegreeCard.css";
 import { Fade, Flip } from "react-reveal";
+// Import the logo image from the assets folder
+import witlogo from "../../assets/images/witlogo-removebg-preview.png"; // Adjust the path if needed
 
 class DegreeCard extends Component {
   render() {
     const degree = this.props.degree;
     const theme = this.props.theme;
+
     return (
       <div className="degree-card">
+        {/* Check if logo_path exists in degree object and display image */}
         {degree.logo_path && (
           <Flip left duration={2000}>
             <div className="card-img">
@@ -17,8 +21,8 @@ class DegreeCard extends Component {
                   maxHeight: "100%",
                   transform: "scale(0.9)",
                 }}
-                src={require(`../../assets/images/${degree.logo_path}`)}
-                alt={degree.alt_name}
+                src={witlogo} // Use the imported image
+                alt="Degree Logo"
               />
             </div>
           </Flip>
@@ -47,13 +51,15 @@ class DegreeCard extends Component {
               </div>
             </div>
             <div className="body-content">
-              {degree.descriptions.map((sentence) => {
-                return (
-                  <p className="content-list" style={{ color: theme.text }}>
-                    {sentence}
-                  </p>
-                );
-              })}
+              {degree.descriptions.map((sentence, index) => (
+                <p
+                  key={index}
+                  className="content-list"
+                  style={{ color: theme.text }}
+                >
+                  {sentence}
+                </p>
+              ))}
               {degree.website_link && (
                 <a
                   href={degree.website_link}
